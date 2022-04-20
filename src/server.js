@@ -1,17 +1,24 @@
 import express from "express"
 import cors from "cors"
+import { testDB } from "./db/index.js"
 
 const app = express()
 
-const port = process.env.PORT || 3002
-
+app.use(express.json())
 app.use(cors())
 
-app.unsubscribe(express.json())
+const port = process.env.PORT || 3002
 
-app.use("/whatever", whateverRouter)
+const initialize = async () => {
+  try {
+    app.listen(port, async () => {
+      console.log("server running on port " + port)
+    })
 
-app.listen(port, async () => {
-  console.log("server running on port" + port)
-})
-app.on("error", (error) => console.log("server crashed!"))
+    app.on("error", (error) => console.log("server crashed!"))
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+initialize()
