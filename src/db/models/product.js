@@ -30,6 +30,6 @@ const product = sequelize.define("product", {
   },
 })
 
-product.sync()
+product.sync({ alter: true })
 
 export default product

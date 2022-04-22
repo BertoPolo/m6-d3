@@ -1,7 +1,7 @@
 import { DataTypes } from "sequelize"
 import sequelize from "../index.js"
 
-const review = sequelize.define("review", {
+const user = sequelize.define("user", {
   id: {
     type: DataTypes.UUID,
     defaultValue: DataTypes.UUIDV4,
@@ -10,14 +10,8 @@ const review = sequelize.define("review", {
   username: {
     type: DataTypes.STRING,
   },
-  text: {
-    type: DataTypes.TEXT,
-  },
-  productId: {
-    type: DataTypes.TEXT,
-  },
 })
 
-review.sync({ alter: true })
+user.sync({ alter: true })
 
-export default review
+export default user

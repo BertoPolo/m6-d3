@@ -1,23 +1,17 @@
 import { DataTypes } from "sequelize"
 import sequelize from "../index.js"
 
-const review = sequelize.define("review", {
+const category = sequelize.define("category", {
   id: {
     type: DataTypes.UUID,
     defaultValue: DataTypes.UUIDV4,
     primaryKey: true,
   },
-  username: {
+  category_name: {
     type: DataTypes.STRING,
-  },
-  text: {
-    type: DataTypes.TEXT,
-  },
-  productId: {
-    type: DataTypes.TEXT,
   },
 })
 
-review.sync({ alter: true })
+category.sync({ alter: true })
 
-export default review
+export default category
