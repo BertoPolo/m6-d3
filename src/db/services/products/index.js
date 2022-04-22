@@ -5,7 +5,7 @@ const productsRouter = express.Router()
 
 productsRouter.get("/", async (req, res, next) => {
   try {
-    const products = await productsRouter.findAll()
+    const products = await product.findAll()
     res.status(200).send(products)
   } catch (error) {
     console.log(error)
@@ -15,8 +15,8 @@ productsRouter.get("/", async (req, res, next) => {
 
 productsRouter.get("/productId", async (req, res, next) => {
   try {
-    const product = await productsRouter.findByPk(req.params.productId)
-    res.status(200).send()
+    const product = await product.findByPk(req.params.productId)
+    res.status(200).send(product)
   } catch (error) {
     console.log(error)
     next(error)
@@ -47,7 +47,9 @@ productsRouter.put("/productId", async (req, res, next) => {
 
 productsRouter.delete("/productId", async (req, res, next) => {
   try {
-    const productToDelete = await product.destroy({ where: req.params.productId })
+    await product.destroy({ where: req.params.productId })
+
+    res.status(200).send("Destroyed")
   } catch (error) {
     console.log(error)
     next(error)
