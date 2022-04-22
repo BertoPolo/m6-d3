@@ -13,7 +13,8 @@ categoriesRouter.get("/", async (req, res, next) => {
   }
 })
 
-categoriesRouter.get("/categoryName", async (req, res, next) => {
+//should be search by ID??
+categoriesRouter.get("/:categoryName", async (req, res, next) => {
   try {
     const data = await category.findOne({ where: { category_name: req.params.categoryName } })
 
@@ -35,7 +36,7 @@ categoriesRouter.post("/", async (req, res, next) => {
   }
 })
 
-categoriesRouter.put("/categoryName", async (req, res, next) => {
+categoriesRouter.put("/:categoryName", async (req, res, next) => {
   try {
     const updatedCategory = await category.update(req.body, {
       where: {
@@ -50,7 +51,7 @@ categoriesRouter.put("/categoryName", async (req, res, next) => {
   }
 })
 
-categoriesRouter.delete("/categoryName", async (req, res, next) => {
+categoriesRouter.delete("/:categoryName", async (req, res, next) => {
   try {
     await category.destroy({ where: { category_name: req.params.categoryName } })
 
