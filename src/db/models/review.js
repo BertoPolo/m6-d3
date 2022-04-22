@@ -18,6 +18,6 @@ const review = sequelize.define("review", {
   },
 })
 
-review.sync({ alter: true })
+review.sync()
 
 export default review
